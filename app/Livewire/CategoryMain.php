@@ -15,7 +15,7 @@ class CategoryMain extends Component{
     public $name;
 
     public function render(){
-        $categories=Category::paginate();
+        $categories=Category::where('name','LIKE','%'.$this->search.'%')->paginate();
         return view('livewire.category-main',compact('categories'));
     }
 

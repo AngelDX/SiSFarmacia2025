@@ -64,3 +64,14 @@ select:focus[data-flux-control] {
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */
+.th-class {
+  @apply px-4 py-3 first:rounded-tl-lg first:rounded-bl-lg last:rounded-tr-lg last:rounded-br-lg
+}
+
+.td-class {
+  @apply px-4 py-3 text-gray-900 bg-gray-200 first:rounded-tl-lg first:rounded-bl-lg last:rounded-tr-lg last:rounded-br-lg
+}
+
+.tr-class {
+  @apply flex flex-col mb-4
+}
