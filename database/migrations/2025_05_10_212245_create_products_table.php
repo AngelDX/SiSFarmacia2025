@@ -23,8 +23,6 @@ return new class extends Migration
             $table->double("total");
             $table->unsignedBigInteger("category_id");
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
-            $table->unsignedBigInteger("purchase_id");
-            $table->foreign("purchase_id")->references("id")->on("purchases")->onDelete("cascade");
             $table->timestamps();
         });
     }

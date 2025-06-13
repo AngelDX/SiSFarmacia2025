@@ -75,3 +75,11 @@ select:focus[data-flux-control] {
 .tr-class {
   @apply flex flex-col mb-4
 }
+
+.fondo{
+    @apply bg-indigo-100 text-gray-900 font-semibold text-center rounded
+}
+
+.tabla{
+    @apply bg-gray-600 text-gray-50 px-2
+}
