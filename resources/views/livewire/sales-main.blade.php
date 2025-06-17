@@ -8,7 +8,7 @@
                 <flux:button wire:click="buscarDNI()" icon="magnifying-glass" class="mt-6">Buscar</flux:button>
             </div>
             <div class="bg-indigo-100 text-gray-900 p-2 rounded-lg mt-2 text-xs">
-                <p>Nombre completo: {{$nombre}}</p>
+                <p>Nombre completo: <span class="font-bold">{{$nombre}}</span></p>
             </div>
         </div>
         <div class="mt-6 grid grid-cols-2 gap-4">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div>
-                <h1>Detalle de venta</h1>
+                <h2 class="text-sm font-medium text-zinc-800 dark:text-white">Detalle de venta</h2>
                  @if(session('detalle'))
                     <div class="grid grid-cols-4 p-2 text-xs gap-2">
                         <div class="fondo">Nombre</div>
@@ -51,14 +51,16 @@
                     <p>El Detalle esta vacio</p>
                 @endif
                 <div class="px-2">
-                    <p class="text-right">Gravada: S/. {{$gravada}}</p>
-                    <p class="text-right">IGV 18%: S/. {{$igv}}</p>
-                    <p class="text-right">Total importe: S/. {{$totalImporte}}</p>
+                    <p class="text-right">Gravada: S/. {{number_format($gravada,2)}}</p>
+                    <p class="text-right">IGV 18%: S/. {{number_format($igv,2)}}</p>
+                    <p class="text-right">Total importe: S/. {{number_format($totalImporte,2)}}</p>
                 </div>
             </div>
         </div>
         <div class="mt-6 text-center">
-            <flux:button wire:click="imprimirVoucher()" variant="primary">Imprimir voucher</flux:button>
+            <flux:button wire:click="guardarVenta()" variant="primary" class="cursor-pointer">Guardar venta</flux:button>
+            <flux:button wire:click="imprimirVoucher()" variant="primary" class="cursor-pointer">Imprimir voucher</flux:button>
+            <flux:button wire:click="nuevaVenta()" variant="primary" class="cursor-pointer">Nueva venta</flux:button>
         </div>
     </div>
     <script>

@@ -45,7 +45,7 @@ class CategoryMain extends Component{
         }
         $this->reset(['isOpen','category']);
         //$this->emitTo('CategoryCrud','render');
-        $this->dispatch('alert','Registro creado satisfactoriamente');
+        $this->dispatch('alert',message:'Registro creado satisfactoriamente');
     }
 
     #[On('delItem')]

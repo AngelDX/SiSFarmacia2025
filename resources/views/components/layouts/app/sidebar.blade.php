@@ -135,13 +135,18 @@
         @stack('modals')
         @livewireScripts
         <script type="text/javascript">
-            Livewire.on('alert',function(message){
-                Swal.fire(
-                'Mensaje del sistema',
-                message,
-                'success'
-                )
-            })
+            document.addEventListener('DOMContentLoaded', function () {
+                Livewire.on('alert', function(event) {
+                    Swal.fire(
+                        'Mensaje del sistema',
+                        event.message,
+                        'success'
+                    )
+                });
+                Livewire.on('error', function(event) {
+                    Swal.fire(event.message);
+                });
+            });
         </script>
         @stack('js')
     </body>
