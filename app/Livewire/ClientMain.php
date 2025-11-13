@@ -2,22 +2,23 @@
 
 namespace App\Livewire;
 
-use App\Livewire\Forms\SupplierForm;
-use App\Models\Supplier;
+use App\Livewire\Forms\ClientForm;
+use App\Models\Client;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class SupplierMain extends Component{
+class ClientMain extends Component
+{
     use WithPagination;
     public $isOpen=false;
     public $search;
-    public ?Supplier $supplier;
-    public SupplierForm $form;
+    public ?Client $supplier;
+    public ClientForm $form;
 
     public function render(){
-        $proveedores=Supplier::where('fullname','LIKE','%'.$this->search.'%')->latest("id")->paginate(10);
-        return view('livewire.supplier-main',compact('proveedores'));
+        $clientes=Client::where('fullname','LIKE','%'.$this->search.'%')->latest("id")->paginate();
+        return view('livewire.client-main',compact('clientes'));
     }
 
     public function create(){
@@ -28,27 +29,25 @@ class SupplierMain extends Component{
     public function store(){
         $this->validate();
         if (!isset($this->supplier->id)) {
-            Supplier::create($this->form->all());
+            Client::create($this->form->all());
         }else{
             $this->supplier->update($this->form->all());
         }
        $this->reset();
     }
 
-    public function edit(Supplier $item){
+    public function edit(Client $item){
         $this->isOpen=true;
         $this->supplier=$item;
         $this->form->fill($item);
     }
 
     #[On('delItem')]
-    public function delete(Supplier $item){
+    public function delete(Client $item){
         $item->delete();
     }
 
     public function updatingSearch(){
         $this->resetPage();
     }
-
-
 }

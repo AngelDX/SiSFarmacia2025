@@ -29,7 +29,7 @@
                 <td class="td-class">{{$item->email}}</td>
                 <td class="td-class">
                     <flux:button wire:click="edit({{$item}})" icon="pencil-square" size="xs" class="cursor-pointer"></flux:button>
-                    <flux:button wire:click="delete({{$item}})"  variant="danger" icon="trash" size="xs" class="cursor-pointer"></flux:button>
+                    <flux:button wire:click="$dispatch('deleteItem',{{$item->id}})"  variant="danger" icon="trash" size="xs" class="cursor-pointer"></flux:button>
                 </td>
             </tr>
             @endforeach
@@ -39,4 +39,33 @@
     <div>
         {{$proveedores->links()}}
     </div>
+<!--Scripts - Sweetalert   -->
+      @push('js')
+        <script>
+          Livewire.on('deleteItem',id=>{
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    //console.log(id);
+                    //alert(id);
+                    Livewire.dispatch('delItem',{item:id});
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+
+                }
+              })
+          });
+        </script>
+      @endpush
+
 </div>

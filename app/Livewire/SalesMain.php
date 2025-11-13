@@ -161,7 +161,7 @@ class SalesMain extends Component{
         if (!$this->ventaid) {
             $this->dispatch('error',message:'Guarde la venta para imprimir');
         } else {
-            $printerIp = '192.168.0.101';
+            $printerIp = '172.22.2.55';
             $printerPort = 9100;
 
             // Buscar venta y detalles

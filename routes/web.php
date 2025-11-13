@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\CategoryMain;
+use App\Livewire\ClientMain;
 use App\Livewire\PurchaseMain;
 use App\Livewire\SalesMain;
 use App\Livewire\SupplierMain;
@@ -25,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('suppliers',SupplierMain::class)->name('suppliers');
     Route::get('purchase',PurchaseMain::class)->name('purchase');
     Route::get('sales',SalesMain::class)->name('sales');
+    Route::get('clients',ClientMain::class)->name('clients');
 });
 
 require __DIR__.'/auth.php';
